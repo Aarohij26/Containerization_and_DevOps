@@ -34,4 +34,14 @@ The table below provides an overview of the experiments included in this reposit
 
 ---
 
+## 📝 Assignments
+
+This section contains theoretical and implementation-based assignments related to Containerization & DevOps concepts.
+
+| Assignment No. | Topic | Description |
+|:--------------:|:------|:------------|
+| [Assignment 1](./Assignment/project/README.md) | Docker & Microservices | Covers Dockerfile creation, Docker Compose, and architecture comparison |
+
+---
+
 ⭐ This repository serves as a structured documentation of practical learning in Containerization & DevOps.

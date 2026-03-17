@@ -1,0 +1,63 @@
+services:
+
+  # ── PostgreSQL Database ──────────────────────────────────────────────
+  db:
+    build:
+      context: ./database
+      dockerfile: Dockerfile
+    container_name: project_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB:       ${POSTGRES_DB}
+      POSTGRES_USER:     ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - pg_data:/var/lib/postgresql/data   # named volume → data persists across restarts
+    networks:
+      macvlan_net:
+        ipv4_address: 192.168.1.101        # static LAN IP for the database container
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+
+  # ── FastAPI Backend ──────────────────────────────────────────────────
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: project_backend
+    restart: unless-stopped
+    environment:
+      DB_HOST:           ${DB_HOST}
+      DB_PORT:           ${DB_PORT}
+      POSTGRES_DB:       ${POSTGRES_DB}
+      POSTGRES_USER:     ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    networks:
+      macvlan_net:
+        ipv4_address: 192.168.1.100        # static LAN IP for the backend container
+    depends_on:
+      db:
+        condition: service_healthy          # wait until DB healthcheck passes
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:8000/health || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+# ── Named Volume ────────────────────────────────────────────────────────
+volumes:
+  pg_data:
+    name: project_pg_data                  # explicit name for easy identification
+
+# ── External Macvlan Network ─────────────────────────────────────────────
+# The network must be created BEFORE running docker compose up.
+# See README.md for the exact creation command.
+networks:
+  macvlan_net:
+    external: true
+    name: macvlan_net
