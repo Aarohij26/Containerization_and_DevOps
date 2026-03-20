@@ -77,19 +77,19 @@ docker exec -it test bash
 docker run -d -p 8080:80 nginx
 ```
 
-![port mapping](images/docker-port.png)
+![port mapping](/Classwork/Docker_basics/Images/image11.png)
 
 ```bash
 docker network ls
 ```
 
-![network list](images/docker-network-ls.png)
+![network list](/Classwork/Docker_basics/Images/image12.png)
 
 ```bash
 docker network create mynet
 ```
 
-![network create](images/docker-network-create.png)
+![network create](/Classwork/Docker_basics/Images/image13.png)
 
 ## 6. Volumes & Data Persistence
 
@@ -98,7 +98,7 @@ docker volume create mydata
 docker run -v mydata:/data ubuntu
 ```
 
-![volume](images/docker-volume.png)
+![volume](/Classwork/Docker_basics/Images/image14.png)
 
 ## 7. Logs & Monitoring
 
@@ -106,13 +106,13 @@ docker run -v mydata:/data ubuntu
 docker logs test
 ```
 
-![logs](images/docker-logs.png)
+![logs](/Classwork/Docker_basics/Images/image15.png)
 
 ```bash
 docker stats
 ```
 
-![stats](images/docker-stats.png)
+![stats](/Classwork/Docker_basics/Images/image16.png)
 
 ## 8. Inspect & Metadata
 
@@ -120,7 +120,7 @@ docker stats
 docker inspect test
 ```
 
-![inspect](images/docker-inspect.png)
+![inspect](/Classwork/Docker_basics/Images/image17.png)
 
 ## 9. Docker Build
 
@@ -128,7 +128,7 @@ docker inspect test
 docker build -t myapp .
 ```
 
-![build](images/docker-build.png)
+![build](/Classwork/Docker_basics/Images/image18.png)
 
 Dockerfile:
 
@@ -138,28 +138,10 @@ RUN apt update && apt install -y nginx
 CMD ["nginx", "-g", "daemon off;"]
 ```
 
-![dockerfile](images/dockerfile.png)
+![dockerfile](/Classwork/Docker_basics/Images/image19.png)
 
-## 10. Cleanup Commands
 
-```bash
-docker container prune
-docker image prune
-docker system prune
-```
-
-![cleanup](images/docker-cleanup.png)
-
-## 11. Docker Compose
-
-```bash
-docker compose up -d --build
-docker compose down
-```
-
-![compose](images/docker-compose.png)
-
-## 12. Minimal Lab Example
+## 10. Minimal Lab Example
 
 ```bash
 docker pull nginx
@@ -170,9 +152,9 @@ docker stop web
 docker rm web
 ```
 
-![lab](images/docker-lab.png)
+![lab](/Classwork/Docker_basics/Images/image20.png)
 
-## 13. Key Concepts
+## 11. Key Concepts
 
 Image → Blueprint
 Container → Running instance
