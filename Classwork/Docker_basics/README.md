@@ -61,7 +61,7 @@ docker restart test
 docker rm test
 ```
 
-![docker rm](images/image9.png)
+![docker rm](./Images/image1.png)
 
 ## 4. Execute Commands Inside Container
 
