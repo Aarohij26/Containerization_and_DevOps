@@ -41,13 +41,13 @@ docker rmi ubuntu
 docker run -it --name test ubuntu bash
 ```
 
-![docker run](images/docker-run.png)
+![docker run](images/image6.png)
 
 ```bash
 docker ps
 ```
 
-![docker ps](images/docker-ps.png)
+![docker ps](images/image7.png)
 
 ```bash
 docker start test
@@ -55,13 +55,13 @@ docker stop test
 docker restart test
 ```
 
-![docker lifecycle](images/docker-start-stop.png)
+![docker lifecycle](images/image8.png)
 
 ```bash
 docker rm test
 ```
 
-![docker rm](images/docker-rm.png)
+![docker rm](images/image9.png)
 
 ## 4. Execute Commands Inside Container
 
@@ -69,7 +69,7 @@ docker rm test
 docker exec -it test bash
 ```
 
-![docker exec](images/docker-exec.png)
+![docker exec](images/image10.png)
 
 ## 5. Networking & Ports
 
