@@ -1,4 +1,4 @@
-# Docker Commands & Flags – HandsOn
+# Docker Commands – HandsOn
 
 ## 1. Docker Basics
 

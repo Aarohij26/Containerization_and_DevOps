@@ -24,7 +24,7 @@ The table below provides an overview of the classwork exercises:
 
 | Classwork No. | Title | Result |
 |:-------------:|:------|:-------|
-| [Classwork 102](./Classwork/Docker_basics/README.md) | Docker Basics | Learned basic Docker commands, image management, and container lifecycle operations |
+| [Classwork 102](./Classwork//1_Docker_basics/README.md) | Docker Basics | Learned basic Docker commands, image management, and container lifecycle operations |
 
 ---
 
