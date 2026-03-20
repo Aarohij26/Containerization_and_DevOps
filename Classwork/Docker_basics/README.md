@@ -6,13 +6,13 @@
 docker version
 ```
 
-![docker version](images/image1.png)
+![docker version](/Classwork/Docker_basics/Images/image1.png)
 
 ```bash
 docker info
 ```
 
-![docker info](images/image2.png)
+![docker info](/Classwork/Docker_basics/Images/image2.png)
 
 ## 2. Image Management
 
@@ -20,20 +20,20 @@ docker info
 docker images
 ```
 
-![docker images](images/image3.png)
+![docker images](/Classwork/Docker_basics/Images/image3.png)
 
 ```bash
 docker pull ubuntu
 docker pull ubuntu:22.04
 ```
 
-![docker pull](images/image4.png)
+![docker pull](/Classwork/Docker_basics/Images/image4.png)
 
 ```bash
 docker rmi ubuntu
 ```
 
-![docker rmi](images/image5.png)
+![docker rmi](/Classwork/Docker_basics/Images/image5.png)
 
 ## 3. Container Lifecycle
 
@@ -41,13 +41,13 @@ docker rmi ubuntu
 docker run -it --name test ubuntu bash
 ```
 
-![docker run](images/image6.png)
+![docker run](/Classwork/Docker_basics/Images/image6.png)
 
 ```bash
 docker ps
 ```
 
-![docker ps](images/image7.png)
+![docker ps](/Classwork/Docker_basics/Images/image7.png)
 
 ```bash
 docker start test
@@ -55,13 +55,13 @@ docker stop test
 docker restart test
 ```
 
-![docker lifecycle](images/image8.png)
+![docker lifecycle](/Classwork/Docker_basics/Images/image8.png)
 
 ```bash
 docker rm test
 ```
 
-![docker rm](/Classwork/Docker_basics/Images/image1.png)
+![docker rm](/Classwork/Docker_basics/Images/image9.png)
 
 ## 4. Execute Commands Inside Container
 
@@ -69,7 +69,7 @@ docker rm test
 docker exec -it test bash
 ```
 
-![docker exec](images/image10.png)
+![docker exec](/Classwork/Docker_basics/Images/image10.png)
 
 ## 5. Networking & Ports
 
