@@ -147,15 +147,6 @@ docker inspect project_backend | grep IPAddress
 docker inspect project_db | grep IPAddress
 
 [IPs](./Images/image12.png)
-
-# Check network
-docker network inspect macvlan_net
-
-# Stop everything (keep volume)
-docker compose down
-
-# Stop and delete volume (data lost!)
-docker compose down -v
 ```
 ---
 
