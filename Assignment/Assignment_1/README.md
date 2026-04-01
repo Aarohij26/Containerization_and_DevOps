@@ -46,7 +46,7 @@ docker network create \
 docker network inspect macvlan_net
 ```
 
-[Inspect](./Images/image2.png)
+[Inspect](./Images/image1.png)
 
 ---
 
