@@ -21,6 +21,7 @@ project/
 ├── .env                    # Secrets — DO NOT commit to Git
 └── README.md
 ```
+![Structure](./Images/image14.png)
 
 ---
 
@@ -132,7 +133,7 @@ docker images
 ![Images](./Images/image11.png)
 
 ---
-## Useful Commands
+## Logs
 
 ```bash
 # View logs
@@ -149,6 +150,20 @@ docker inspect project_db | grep IPAddress
 ![IPs](./Images/image12.png)
 ```
 ---
+
+#Inspect Backend Container
+```bash
+docker inspect node_backend
+```
+![Inspect Backend](./Images/image15.png)
+
+---
+
+**Inspect DB**
+```bash
+docker inspect postgres_db
+```
+![Inspect DB](./Images/image16.png)
 
 ## Image Size Comparison
 
