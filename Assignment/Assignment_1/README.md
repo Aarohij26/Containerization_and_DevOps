@@ -182,3 +182,12 @@ Expected approximate sizes (multi-stage build benefit):
 | db (runtime)      | ~90 MB      | postgres:16-alpine             |
 
 Without multi-stage (single-stage with build tools): ~300+ MB for the backend.
+
+**_Macvlan Vs IPvlan_**
+
+| Feature | MACVLAN | IPVLAN |
+|--------|---------|--------|
+| MAC addresses | One per container | One shared for all |
+| Network switch load | Higher (learns many MACs) | Lower (one MAC) |
+| Scalability | Limited by switch | Much higher |
+| Best for | Small deployments | Large-scale |
