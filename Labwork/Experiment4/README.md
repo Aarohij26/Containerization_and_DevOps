@@ -7,11 +7,9 @@ This experiment demonstrates Docker basics: containerizing apps, building images
 ## 🐍 Part 1: Flask Application
 
 ### Create App
-mkdir my-flask-app
-cd my-flask-app
-
-📸 Screenshot:
-(Add screenshot here)
+mkdir flaskapp
+cd flaskapp
+![Creaation](./Images/1.png)
 
 app.py
 from flask import Flask
