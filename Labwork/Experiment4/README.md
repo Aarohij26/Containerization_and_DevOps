@@ -144,14 +144,14 @@ docker build -t my-flask-app:latest -t my-flask-app:1.0 .
 ```bash
 docker build -t username/my-flask-app:1.0 .
 ```
-![Custom Registry](./Images/11.png)
+![Custom Registry](./Images/12.png)
 
 
 **Step-11:- Tag existing image**
 ```bash
 docker tag my-flask-app:latest my-flask-app:v1.0
 ```
-![Tagging Existing Image](./Images/12.png)
+![Tagging Existing Image](./Images/13.png)
 
 
 **Step-12: View Image Details**
