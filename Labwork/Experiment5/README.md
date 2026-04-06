@@ -40,6 +40,7 @@ docker run -d -v /app/data --name web1 nginx
 docker volume ls
 docker inspect web1 | grep -A 5 Mounts
 ```
+![Data Persistence](./Images/4.png)
 
 #### Named Volume
 ```bash
