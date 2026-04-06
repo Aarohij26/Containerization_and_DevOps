@@ -40,7 +40,7 @@ docker run -d -v /app/data --name web1 nginx
 docker volume ls
 docker inspect web1 | grep -A 5 Mounts
 ```
-![Data Persistence](./Images/4.png)
+![Anonymous Volume](./Images/4.png)
 
 #### Named Volume
 ```bash
@@ -49,6 +49,7 @@ docker run -d -v mydata:/app/data --name web2 nginx
 docker volume ls
 docker volume inspect mydata
 ```
+![Named Volume](./Images/5.png)
 
 #### Bind Mount
 ```bash
@@ -57,7 +58,7 @@ docker run -d -v ~/myapp-data:/app/data --name web3 nginx
 echo "From Host" > ~/myapp-data/host-file.txt
 docker exec web3 cat /app/data/host-file.txt
 ```
-
+![Bind mount](./Images/6.png)
 ---
 
 ### Lab 3: Practical Examples  
