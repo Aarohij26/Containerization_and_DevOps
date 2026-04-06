@@ -120,10 +120,21 @@ curl http://localhost:8080
 
 ```bash
 docker volume ls
+```
+```bash
 docker volume create app-volume
+```
+```bash
 docker volume inspect app-volume
+```
+```bash
 docker volume prune
+```
+```bash
 docker volume rm volume-name
+```
+```bash
+docker cp local-file.txt container-name:/path/in/volume
 ```
 
 ---
