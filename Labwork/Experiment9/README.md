@@ -181,7 +181,7 @@ done
 ```bash
 echo "[servers]" > inventory.ini
 ```
-![Version](./16.png)
+![Version](./19.png)
 
 ```bash
 for i in {1..4}; do
@@ -198,7 +198,7 @@ ansible_ssh_private_key_file=~/.ssh/id_rsa
 ansible_python_interpreter=/usr/bin/python3
 EOF
 ```
-![Version](./18.png)
+![Version](./20.png)
 
 ---
 
