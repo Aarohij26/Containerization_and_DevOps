@@ -49,11 +49,14 @@ Roles            Reusable scripts
 # 🧪 Part A: Installation
 
 ## Install via pip
+```bash
 pip install ansible
-
+```
 ![Install](./1.png)
 
+```bash
 ansible --version
+```
 ![Version](./2.png)
 
 ## Install via apt
