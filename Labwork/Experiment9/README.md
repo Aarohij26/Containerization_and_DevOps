@@ -139,13 +139,13 @@ docker build -t ubuntu-server .
 ```bash
 docker run -d -p 2222:22 --name ssh-test-server ubuntu-server
 ```
-![Version](./11.png)
+![Version](./12.png)
 
 ## Get Container IP
 ```bash
 docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' ssh-test-server
 ```
-![Version](./12.png)
+![Version](./13.png)
 
 ---
 
