@@ -50,7 +50,7 @@ Roles            Reusable scripts
 
 ## Install via pip
 pip install ansible
-📸 Add Screenshot Here
+![Install](./Images/1.png)
 
 ansible --version
 📸 Add Screenshot Here
