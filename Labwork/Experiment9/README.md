@@ -87,13 +87,13 @@ Expected Output:
 ```bash
 ssh-keygen -t rsa -b 4096
 ```
-![Version](./7.png)
+![Version](./6.png)
 
 ```bash
 cp ~/.ssh/id_rsa.pub .
 cp ~/.ssh/id_rsa .
 ```
-![Version](./8.png)
+![Version](./7.png)
 
 ---
 
@@ -124,7 +124,7 @@ EXPOSE 22
 
 CMD ["/usr/sbin/sshd", "-D"]
 ```
-![Version](./9.png)
+![Version](./8.png)
 
 ---
 
@@ -132,13 +132,13 @@ CMD ["/usr/sbin/sshd", "-D"]
 ```bash
 docker build -t ubuntu-server .
 ```
-![Version](./10.png)
+![Version](./9.png)
 
 ## Run Container
 ```bash
 docker run -d -p 2222:22 --name ssh-test-server ubuntu-server
 ```
-![Version](./11.png)
+![Version](./10.png)
 
 ## Get Container IP
 ```bash
