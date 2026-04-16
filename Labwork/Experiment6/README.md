@@ -23,7 +23,7 @@ docker run -d \
   -v $(pwd)/html:/usr/share/nginx/html \
   nginx:alpine
 ```
-![Version](./1.png)
+![Version](./Images/1.png)
 
 
 
