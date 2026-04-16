@@ -191,7 +191,7 @@ done
 ![Version](./17.png)
 ```bash
 cat << EOF >> inventory.ini
-
+ 
 [servers:vars]
 ansible_user=root
 ansible_ssh_private_key_file=~/.ssh/id_rsa
