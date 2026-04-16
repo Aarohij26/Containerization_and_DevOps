@@ -29,7 +29,7 @@ docker run -d \
 
 ## Docker Compose (Declarative)
 
-```yaml
+yaml
 version: '3.8'
 
 services:
@@ -40,7 +40,7 @@ services:
       - "8081:80"
     volumes:
       - ./html:/usr/share/nginx/html
-```
+
 
 Run:
 
