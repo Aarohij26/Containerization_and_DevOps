@@ -103,6 +103,8 @@ services:
     volumes:
       - ./html:/usr/share/nginx/html
 ```
+![Version](./Images/6.png)
+![Version](./Images/7.png)
 
 Run:
 
@@ -111,6 +113,7 @@ docker compose up -d
 docker compose ps
 docker compose down
 ```
+![Version](./Images/8.png)
 
 ---
 
