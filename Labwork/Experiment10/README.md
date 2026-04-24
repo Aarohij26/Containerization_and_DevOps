@@ -66,6 +66,8 @@ docker logs -f sonarqube
 
 * URL: http://localhost:9000
 * Default Login: `admin / admin`
+![Version](./Images/5.png)
+![Version](./Images/6.png)
 
 ---
 
@@ -121,7 +123,7 @@ Run:
 ```bash
 docker compose up -d
 ```
-
+![Version](./Images/7.png)
 ---
 
 ## 💻 Step 2: Create Sample Java Application
