@@ -24,6 +24,7 @@ To set up SonarQube using Docker, analyze a Java application for bugs, vulnerabi
 ```bash
 docker network create sonarqube-lab
 ```
+![Version](./Images/1.png)
 
 ### Start PostgreSQL Database
 
@@ -37,6 +38,7 @@ docker run -d \
   -v sonar-db-data:/var/lib/postgresql/data \
   postgres:13
 ```
+![Version](./Images/2.png)
 
 ### Start SonarQube Server
 
@@ -52,12 +54,13 @@ docker run -d \
   -v sonar-extensions:/opt/sonarqube/extensions \
   sonarqube:lts-community
 ```
-
+![Version](./Images/3.png)
 ### Verify Logs
 
 ```bash
 docker logs -f sonarqube
 ```
+![Version](./Images/4.png)
 
 ### Access SonarQube
 
