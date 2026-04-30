@@ -62,11 +62,12 @@ def home():
 
 app.run(host="0.0.0.0", port=80)
 ```
-
+![Version](./Images/1.png)
 **2. Dependencies (`requirements.txt`)**
 ```
 flask
 ```
+![Version](./Images/2.png)
 
 **3. Dockerfile**
 ```dockerfile
@@ -80,6 +81,7 @@ RUN pip install -r requirements.txt
 EXPOSE 80
 CMD ["python", "app.py"]
 ```
+![Version](./Images/3.png)
 
 **4. Jenkinsfile**
 ```groovy
@@ -120,7 +122,7 @@ pipeline {
     }
 }
 ```
-
+![Version](./Images/4.png)
 ---
 
 ### Part B: Jenkins Setup (via Docker Compose)
@@ -145,6 +147,7 @@ services:
 volumes:
   jenkins_home:
 ```
+![Version](./Images/5.png)
 
 **Start Jenkins:**
 ```bash
@@ -152,6 +155,7 @@ docker-compose up -d
 ```
 
 **Access Jenkins:** `http://localhost:8080`
+![Version](./Images/6.png)
 
 **Get initial admin password:**
 ```bash
