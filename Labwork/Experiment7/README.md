@@ -1,49 +1,58 @@
-# 🚀 CI/CD Pipeline using Jenkins, GitHub & Docker Hub
+# Lab Experiment 7: CI/CD Pipeline using Jenkins, GitHub & Docker Hub
 
-## 📌 Overview
-This project demonstrates a complete CI/CD pipeline using Jenkins for automation, GitHub for source code management, and Docker Hub for container image storage. The pipeline automatically builds and pushes a Docker image whenever code is updated in GitHub.
+## Aim
+Design and implement a complete CI/CD pipeline using Jenkins, integrating source code from GitHub, and building & pushing Docker images to Docker Hub.
 
-## 🎯 Aim
-To design and implement a CI/CD pipeline that fetches source code from GitHub, builds a Docker image, and pushes the image to Docker Hub.
+---
 
-## 🎯 Objectives
-- Understand CI/CD workflow using Jenkins
-- Create a structured GitHub repository
-- Automate Docker image build & push
-- Securely manage credentials in Jenkins
-- Trigger builds automatically using webhooks
+## Objectives
+- Understand CI/CD workflow using Jenkins (GUI-based automation server)
+- Create a structured GitHub repository containing application code and a `Jenkinsfile`
+- Build Docker images from source code automatically
+- Securely store Docker Hub credentials inside Jenkins
+- Automate build & push using GitHub Webhook triggers
+- Use the same Docker host as the Jenkins agent
 
-## ⚙️ Tech Stack
-Jenkins (Docker container), GitHub, Docker & Docker Compose, Docker Hub, Python (Flask)
+---
 
-## 📁 Project Structure
+## Tech Stack
+
+| Tool | Role |
+|------|------|
+| Jenkins | CI/CD automation server |
+| GitHub | Source code + pipeline definition host |
+| Docker | Build & package application |
+| Docker Hub | Container image registry |
+| Webhook | Trigger automation on code push |
+
+---
+
+## Workflow Overview
+
+```
+Developer → GitHub Push → Webhook → Jenkins → Docker Build → Docker Hub
+```
+
+---
+
+## Project Structure
+
+```
 my-app/
-├── app.py
-├── requirements.txt
-├── Dockerfile
-├── Jenkinsfile
+├── app.py              # Flask web application
+├── requirements.txt    # Python dependencies
+├── Dockerfile          # Image build instructions
+└── Jenkinsfile         # Pipeline definition
+```
 
-## 🧠 Concept
-CI (Continuous Integration): Automatically builds and tests code after every commit  
-CD (Continuous Deployment): Automatically deploys the built application  
+---
 
-Workflow:
-Developer → GitHub → Webhook → Jenkins → Build → Docker Hub
+## Setup Guide
 
-## 🛠️ Setup Instructions
+### Part A: GitHub Repository
 
-### 🔹 Prerequisites
-- Docker installed
-- Docker Compose installed
-- GitHub account
-- Docker Hub account
-
-## 🧩 Part A: GitHub Setup
-
-### 1. Create Repository
-Create a repository named: my-app
-
-### 2. Application Code (app.py)
+**1. Application Code (`app.py`)**
+```python
 from flask import Flask
 app = Flask(__name__)
 
@@ -52,35 +61,49 @@ def home():
     return "Hello from CI/CD Pipeline!"
 
 app.run(host="0.0.0.0", port=80)
+```
 
-### 3. requirements.txt
+**2. Dependencies (`requirements.txt`)**
+```
 flask
+```
 
-### 4. Dockerfile
+**3. Dockerfile**
+```dockerfile
 FROM python:3.10-slim
+
 WORKDIR /app
 COPY . .
+
 RUN pip install -r requirements.txt
+
 EXPOSE 80
 CMD ["python", "app.py"]
+```
 
-### 5. Jenkinsfile
+**4. Jenkinsfile**
+```groovy
 pipeline {
     agent any
+
     environment {
         IMAGE_NAME = "your-dockerhub-username/myapp"
     }
+
     stages {
+
         stage('Clone Source') {
             steps {
                 git 'https://github.com/your-username/my-app.git'
             }
         }
+
         stage('Build Docker Image') {
             steps {
                 sh 'docker build -t $IMAGE_NAME:latest .'
             }
         }
+
         stage('Login to Docker Hub') {
             steps {
                 withCredentials([string(credentialsId: 'dockerhub-token', variable: 'DOCKER_TOKEN')]) {
@@ -88,6 +111,7 @@ pipeline {
                 }
             }
         }
+
         stage('Push to Docker Hub') {
             steps {
                 sh 'docker push $IMAGE_NAME:latest'
@@ -95,11 +119,16 @@ pipeline {
         }
     }
 }
+```
 
-## 🐳 Part B: Jenkins Setup (Docker)
+---
 
-### docker-compose.yml
+### Part B: Jenkins Setup (via Docker Compose)
+
+**`docker-compose.yml`**
+```yaml
 version: '3.8'
+
 services:
   jenkins:
     image: jenkins/jenkins:lts
@@ -112,65 +141,131 @@ services:
       - jenkins_home:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock
     user: root
+
 volumes:
   jenkins_home:
+```
 
-### Run Jenkins
+**Start Jenkins:**
+```bash
 docker-compose up -d
+```
 
-Access: http://localhost:8080
+**Access Jenkins:** `http://localhost:8080`
 
-## ⚙️ Part C: Jenkins Configuration
-- Go to Manage Jenkins → Credentials → Add Credentials
-- Type: Secret Text
-- ID: dockerhub-token
-- Value: Docker Hub Access Token
+**Get initial admin password:**
+```bash
+docker exec -it jenkins cat /var/jenkins_home/secrets/initialAdminPassword
+```
 
-Create Pipeline Job:
-- New Item → Pipeline
-- Pipeline script from SCM
-- Add GitHub repo URL
-- Script Path: Jenkinsfile
+After unlocking: install suggested plugins and create an admin user.
 
-## 🔗 Part D: GitHub Webhook
-- Go to GitHub → Settings → Webhooks → Add Webhook
-- Payload URL: http://<your-server-ip>:8080/github-webhook/
-- Select Push Events
+---
 
-## 🔄 Execution Flow
-1. Developer pushes code to GitHub
-2. Webhook triggers Jenkins
-3. Jenkins pipeline runs:
-   - Clone code
-   - Build Docker image
-   - Login to Docker Hub
-   - Push image
-4. Docker image is available globally
+### Part C: Jenkins Configuration
 
-## 🔐 withCredentials Explained
+**1. Add Docker Hub Credentials**
+```
+Manage Jenkins → Credentials → Add Credentials
+  Type:  Secret Text
+  ID:    dockerhub-token
+  Value: <your Docker Hub Access Token>
+```
+
+**2. Create Pipeline Job**
+```
+New Item → Pipeline
+  Name: ci-cd-pipeline
+  Pipeline script from SCM
+  SCM: Git
+  Repo URL: https://github.com/your-username/my-app.git
+  Script Path: Jenkinsfile
+```
+
+---
+
+### Part D: GitHub Webhook
+
+```
+GitHub Repo → Settings → Webhooks → Add Webhook
+  Payload URL: http://<your-server-ip>:8080/github-webhook/
+  Events: Push events
+```
+
+---
+
+## Pipeline Execution Flow
+
+| Stage | Action |
+|-------|--------|
+| **Code Push** | Developer pushes code to GitHub |
+| **Webhook Trigger** | GitHub notifies Jenkins automatically |
+| **Clone** | Jenkins pulls latest code |
+| **Build** | Docker builds the image using `Dockerfile` |
+| **Auth** | Jenkins injects Docker Hub token securely |
+| **Push** | Image is pushed to Docker Hub |
+| **Done** | Image available globally on Docker Hub |
+
+---
+
+## Understanding `withCredentials`
+
+The `withCredentials` block securely injects stored secrets as temporary environment variables — the secret never appears in plain text in your code or logs.
+
+```groovy
 withCredentials([string(credentialsId: 'dockerhub-token', variable: 'DOCKER_TOKEN')]) {
-    sh 'echo $DOCKER_TOKEN | docker login -u username --password-stdin'
+    sh 'echo $DOCKER_TOKEN | docker login -u your-username --password-stdin'
 }
-This ensures secure handling of secrets without hardcoding passwords.
+```
 
-## 📊 Observations
-- Jenkins simplifies CI/CD automation
-- GitHub manages source code and pipeline definition
-- Docker ensures consistent builds
-- Webhooks enable full automation
+| Part | Meaning |
+|------|---------|
+| `string` | Type of secret (plain text token) |
+| `credentialsId` | ID used when saving secret in Jenkins |
+| `variable` | Temporary env variable name inside the block |
 
-## ✅ Result
-Successfully implemented a CI/CD pipeline where code is automatically fetched, Docker image is built, and securely pushed to Docker Hub.
+> ⚠️ `$DOCKER_TOKEN` is only accessible **inside** the `withCredentials` block — it disappears after.
 
-## ❓ Viva Questions
-- What is Jenkinsfile?
-- What is a webhook?
-- Why use Docker in CI/CD?
-- How are credentials secured in Jenkins?
-- What is the role of Docker socket?
+**Never do this:**
+```groovy
+sh 'docker login -u user -p mypassword'  // ❌ Hardcoded secret
+```
 
-## 🧾 Key Takeaways
-- CI/CD improves development speed
-- Jenkins pipelines are code-driven
-- Always store secrets securely
-- Automation reduces manual effort
+---
+
+## Key Notes
+
+- Jenkins is GUI-based but pipelines are code-driven via `Jenkinsfile`
+- Docker socket (`/var/run/docker.sock`) is mounted so Jenkins can control host Docker directly — no separate agent needed
+- Always store secrets in Jenkins Credentials — never hardcode them
+- Webhook makes the entire pipeline fully automatic on every push
+
+---
+
+## Observations
+
+- Jenkins GUI simplifies CI/CD pipeline management
+- GitHub acts as both source code host and pipeline definition store
+- Docker ensures consistent, reproducible builds
+- Webhook eliminates the need for manual pipeline triggers
+
+---
+
+## Result
+
+Successfully implemented a complete CI/CD pipeline where:
+- Source code and pipeline definition are maintained in GitHub
+- Jenkins automatically detects changes via webhook
+- Docker image is built on the host agent
+- Image is securely pushed to Docker Hub
+
+---
+
+## Viva Questions
+
+1. What is the role of `Jenkinsfile`?
+2. How does Jenkins integrate with GitHub?
+3. Why is Docker used in CI/CD?
+4. What is a webhook and how does it work?
+5. Why store the Docker Hub token in Jenkins credentials instead of the `Jenkinsfile`?
+6. What is the benefit of using the same host as the Jenkins agent?
