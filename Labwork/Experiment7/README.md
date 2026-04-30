@@ -62,12 +62,12 @@ def home():
 
 app.run(host="0.0.0.0", port=80)
 ```
-![Version](./Images/1.png)
+![Version](./1.png)
 **2. Dependencies (`requirements.txt`)**
 ```
 flask
 ```
-![Version](./Images/2.png)
+![Version](./2.png)
 
 **3. Dockerfile**
 ```dockerfile
@@ -81,7 +81,7 @@ RUN pip install -r requirements.txt
 EXPOSE 80
 CMD ["python", "app.py"]
 ```
-![Version](./Images/3.png)
+![Version](./3.png)
 
 **4. Jenkinsfile**
 ```groovy
@@ -122,7 +122,7 @@ pipeline {
     }
 }
 ```
-![Version](./Images/4.png)
+![Version](./4.png)
 ---
 
 ### Part B: Jenkins Setup (via Docker Compose)
@@ -147,7 +147,7 @@ services:
 volumes:
   jenkins_home:
 ```
-![Version](./Images/5.png)
+![Version](./5.png)
 
 **Start Jenkins:**
 ```bash
@@ -155,15 +155,18 @@ docker-compose up -d
 ```
 
 **Access Jenkins:** `http://localhost:8080`
-![Version](./Images/6.png)
+![Version](./6.png)
 
 **Get initial admin password:**
 ```bash
 docker exec -it jenkins cat /var/jenkins_home/secrets/initialAdminPassword
 ```
+![Version](./7.png)
+![Version](./8.png)
 
 After unlocking: install suggested plugins and create an admin user.
-
+![Version](./9.png)
+![Version](./10.png)
 ---
 
 ### Part C: Jenkins Configuration
@@ -175,6 +178,7 @@ Manage Jenkins → Credentials → Add Credentials
   ID:    dockerhub-token
   Value: <your Docker Hub Access Token>
 ```
+![Version](./11.png)
 
 **2. Create Pipeline Job**
 ```
@@ -185,6 +189,8 @@ New Item → Pipeline
   Repo URL: https://github.com/your-username/my-app.git
   Script Path: Jenkinsfile
 ```
+![Version](./12.png)
+![Version](./13.png)
 
 ---
 
