@@ -60,8 +60,8 @@ When the command is executed, Docker performs the following:
 ## 🧪 Additional Command
 To run an interactive Ubuntu container:
 docker run -it ubuntu bash
-
 ![S1](./Images/5.png)
+
 ## ✅ Conclusion
 Docker has been successfully installed and verified. The Hello World container confirms that Docker is functioning correctly, including pulling images and running containers. Permission issues were identified and resolved using sudo privileges.
 
