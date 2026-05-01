@@ -4,18 +4,20 @@
 To install Docker, verify its version, handle permission issues, and run a test container to ensure Docker is working correctly.
 
 ## 🛠️ Step 1: Verify Docker Installation
+```bash
 Command:
 docker -v
-
+```
 Output:
-Docker version 28.2.2, build 28.2.2-0ubuntu1~24.04.1
-
+![S1](./Images/1.png)
 Inference:
 Docker is successfully installed on the system.
 
 ## 🚀 Step 2: Run Hello World Container
+```bash
 Command:
 sudo docker run hello-world
+```
 
 Process:
 - Docker checks for the image locally
@@ -23,8 +25,7 @@ Process:
 - Creates and runs the container
 
 Output:
-Hello from Docker!
-This message shows that your installation appears to be working correctly.
+![S1](./Images/2.png)
 
 Inference:
 - Docker daemon is running properly
@@ -32,9 +33,11 @@ Inference:
 - Container execution is successful
 
 ## ⚠️ Step 3: Permission Error Encountered
+```bash
 Command:
 apt install docker
-
+```
+![S1](./Images/3.png)
 Error:
 Could not open lock file /var/lib/dpkg/lock-frontend - open (13: Permission denied)
 Unable to acquire the dpkg frontend lock, are you root?
@@ -53,10 +56,12 @@ When the command is executed, Docker performs the following:
 4. The container runs and produces output
 5. Output is displayed on the terminal
 
+![S1](./Images/4.png)
 ## 🧪 Additional Command
 To run an interactive Ubuntu container:
 docker run -it ubuntu bash
 
+![S1](./Images/5.png)
 ## ✅ Conclusion
 Docker has been successfully installed and verified. The Hello World container confirms that Docker is functioning correctly, including pulling images and running containers. Permission issues were identified and resolved using sudo privileges.
 
