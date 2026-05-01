@@ -156,6 +156,7 @@ docker run -d \
   -e DEBUG="true" \
   my-node-app
 ```
+![Path](./Images/20.png)
 
 ### Using .env File  
 
@@ -163,6 +164,7 @@ docker run -d \
 echo "DATABASE_HOST=localhost" > .env
 echo "API_KEY=secret123" >> .env
 ```
+![Path](./Images/21.png)
 
 ```bash
 docker run -d --env-file .env my-app
