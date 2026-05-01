@@ -66,13 +66,21 @@ docker node ls
 ```bash
 docker stack deploy -c docker-compose.yml wpstack
 ```
+![Version](./Images/6.png)
 
 ### Task 4: Verify Deployment
 ```bash
 docker service ls
+```
+![Version](./Images/7.png)
+```bash
 docker service ps wpstack_wordpress
+```
+![Version](./Images/8.png)
+```bash
 docker ps
 ```
+![Version](./Images/9.png)
 
 ### Task 5: Access WordPress
 Open in browser:
