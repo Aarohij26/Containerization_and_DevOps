@@ -109,17 +109,33 @@ docker ps | grep wordpress
 ### Task 7: Test Self-Healing
 ```bash
 docker ps | grep wordpress
+```
+![Version](./Images/15.png)
+
+```bash
 docker kill <container-id>
+```
+![Version](./Images/16.png)
+
+```bash
 docker service ps wpstack_wordpress
+```
+![Version](./Images/17.png)
+```bash
 docker ps | grep wordpress
 ```
+![Version](./Images/18.png)
 
 ### Task 8: Remove the Stack
 ```bash
 docker stack rm wpstack
+```
+![Version](./Images/19.png)
+```bash
 docker service ls
 docker ps
 ```
+![Version](./Images/20.png)
 
 ## PART C – ANALYSIS (Compose vs Swarm)
 Docker Compose works on a single host with manual recovery and limited scaling. Docker Swarm supports multi-node clusters, automatic scaling, load balancing, and self-healing. Compose is best for development/testing, while Swarm is suitable for small production.
@@ -137,13 +153,6 @@ Docker Compose works on a single host with manual recovery and limited scaling. 
 - How does Swarm achieve self-healing?  
 - What happens when a container is killed?  
 - Can the same Compose file be reused?  
-
-## PART F – OPTIONAL: Multi-Node Swarm
-```bash
-docker swarm join-token worker
-docker swarm join --token <token> <manager-ip>:2377
-docker node ls
-```
 
 ## SUMMARY
 You progressed from single containers to multi-container applications and now to orchestration using Docker Swarm. You learned scaling, self-healing, and load balancing. Compose defines the application, Swarm runs it reliably.
