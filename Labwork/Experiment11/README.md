@@ -85,14 +85,26 @@ docker ps
 ### Task 5: Access WordPress
 Open in browser:
 http://localhost:8080
+![Version](./Images/10.png)
+![Version](./Images/11.png)
 
 ### Task 6: Scale the Application
 ```bash
 docker service scale wpstack_wordpress=3
+```
+![Version](./Images/12.png)
+```bash
 docker service ls
+```
+![Version](./Images/13.png)
+```bash
 docker service ps wpstack_wordpress
+```
+![Version](./Images/14.png)
+```bash
 docker ps | grep wordpress
 ```
+![Version](./Images/15.png)
 
 ### Task 7: Test Self-Healing
 ```bash
