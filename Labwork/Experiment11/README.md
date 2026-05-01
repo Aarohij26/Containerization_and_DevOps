@@ -42,18 +42,25 @@ volumes:
   db_data:
   wp_data:
 ```
+![Version](./Images/1.png)
+![Version](./Images/2.png)
 
 ### Task 1: Check Current State
 ```bash
 docker compose down -v
 docker ps
 ```
+![Version](./Images/3.png)
 
 ### Task 2: Initialize Docker Swarm
 ```bash
 docker swarm init
+```
+![Version](./Images/4.png)
+```bash
 docker node ls
 ```
+![Version](./Images/5.png)
 
 ### Task 3: Deploy as a Stack
 ```bash
