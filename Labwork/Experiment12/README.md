@@ -17,6 +17,7 @@ Learn why Kubernetes is used, understand its core concepts, and perform deployme
 
 ## 🧪 Hands-On Lab (k3d / Minikube)
 Assumption: `kubectl` and cluster already installed  
+![Version](./Images/1.png)
 
 ## 🔹 Task 1: Create Deployment
 Create `wordpress-deployment.yaml`
@@ -39,9 +40,11 @@ spec:
         image: wordpress:latest  
         ports:  
         - containerPort: 80  
+![Version](./Images/2.png)
 
 ▶ Apply:
 `kubectl apply -f wordpress-deployment.yaml`
+![Version](./Images/3.png)
 
 ## 🔹 Task 2: Expose as Service
 Create `wordpress-service.yaml`
@@ -57,35 +60,46 @@ spec:
     - port: 80  
       targetPort: 80  
       nodePort: 30007  
+![Version](./Images/4.png)
 
 ▶ Apply:
 `kubectl apply -f wordpress-service.yaml`
+![Version](./Images/5.png)
 
 ## 🔹 Task 3: Verify
 ▶ Check pods:
 `kubectl get pods`
+![Version](./Images/6.png)
 
 ▶ Check service:
 `kubectl get svc`
+![Version](./Images/7.png)
 
 ▶ Access:
 `http://<node-ip>:30007`
+![Version](./Images/8.png)
 
 ▶ Get IP:
 `minikube ip`
+![Version](./Images/9.png)
 
 ## 🔹 Task 4: Scale Deployment
 ▶ Scale:
 `kubectl scale deployment wordpress --replicas=4`
-
+![Version](./Images/10.png)
 ▶ Verify:
 `kubectl get pods`
+![Version](./Images/11.png)
 
 ## 🔹 Task 5: Self-Healing
 ▶ Commands:
 `kubectl get pods`  
+![Version](./Images/12.png)
+
 `kubectl delete pod <pod-name>`  
+![Version](./Images/13.png)
 `kubectl get pods`
+![Version](./Images/14.png)
 
 ## ⚖️ Swarm vs Kubernetes
 - Swarm → Easy but limited  
